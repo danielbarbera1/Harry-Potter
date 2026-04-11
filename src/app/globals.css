@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@theme {
+  --color-hogwarts-stone: #1a1c20;
+  --color-hogwarts-wood: #3e2723;
+  --color-hogwarts-parchment: #f4e8c1;
+
+  --color-gryffindor-primary: #740001;
+  --color-gryffindor-secondary: #d3a625;
+
+  --color-slytherin-primary: #1a472a;
+  --color-slytherin-secondary: #5d9668;
+
+  --color-ravenclaw-primary: #0e1a40;
+  --color-ravenclaw-secondary: #946b2d;
+
+  --color-hufflepuff-primary: #eeb939;
+  --color-hufflepuff-secondary: #726255;
+
+  --font-harry: "Harry Potter", "Playfair Display", serif;
+}
