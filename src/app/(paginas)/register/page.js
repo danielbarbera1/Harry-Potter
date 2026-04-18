@@ -1,96 +1,73 @@
-'use client'
-import { useState } from 'react'
-import { supabase } from '@/app/utils/supabase'
-import { useRouter } from 'next/navigation'
+`use client`;
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { createClient } from '../../utils/supabase/client';
 
-export default function Register() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [loading, setLoading] = useState(false)
-  const router = useRouter()
+export default function RegisterPage() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(false);
+  const router = useRouter();
 
-  // La función clave es signUp, que es la forma recomendada de registrar un nuevo usuario con email y contraseña en Supabase
   const handleRegister = async (e) => {
-    e.preventDefault()// Esto evita que la página se recargue al enviar el formulario
-    setLoading(true)
+    e.preventDefault();
+    const supabase = createClient();
 
-    // La función clave es signUp
-    const { data, error } = await supabase.auth.signUp({
+    const { error } = await supabase.auth.signUp({
       email,
       password,
-      options: {
-        // Esto es opcional, pero ayuda a redirigir al usuario después de confirmar
-        emailRedirectTo: `${window.location.origin}/auth/callback`,
-      },
-    })
+    });
 
     if (error) {
-      alert('Error al crear cuenta: ' + error.message)
+      setError('Hubo un error al registrarse. Por favor, intenta nuevamente.');
     } else {
-      alert('¡Guerrero registrado! Revisa tu correo.')
-      router.push('/login')
+      setSuccess(true);
+      setTimeout(() => router.push('/login'), 3000); // Redirige al login después de 3 segundos
     }
-    setLoading(false)
-  }
+  };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#f0f0f0] p-4">
-      <div className="w-full max-w-md bg-white border-8 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] p-8 italic">
-        <h2 className="text-4xl font-black text-[#E31F26] uppercase mb-8 [text-shadow:3px_3px_0px_#000] tracking-tighter">
-          NUEVO <span className="text-[#5088C5]">GUERRERO</span>
-        </h2>
-
-
-        <form onSubmit={handleRegister} className="space-y-4">
-          <div>
-            <label className="block font-black text-black uppercase mb-1">Nombre / Nickname</label>
-            <input
-              type="text"
-              placeholder="Ej: Veggie77"
-              className="w-full border-4 border-black text-black p-3 font-bold outline-none focus:bg-[#FCEE21] shadow-[4px_4px_0px_0px_#000]"
-            />
-          </div>
-
-          <div>
-            <label className="block font-black text-black uppercase mb-1">Raza (Saiyajin, Humano...)</label>
-            <select className="w-full border-4 border-black text-black p-3 font-bold outline-none focus:bg-[#FCEE21] shadow-[4px_4px_0px_0px_#000] appearance-none">
-              <option>Saiyajin</option>
-              <option>Humano</option>
-              <option>Namekusei</option>
-            </select>
-          </div>
-
-          <div>
-            <label className="block font-black text-black uppercase mb-1">Correo Electrónico</label>
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <div className="bg-white p-8 rounded shadow-md w-full max-w-md">
+        <h1 className="text-2xl font-bold mb-6 text-center">Registrarse</h1>
+        {error && <p className="text-red-500 text-center mb-4">{error}</p>}
+        {success && <p className="text-green-500 text-center mb-4">Registro exitoso. Redirigiendo al login...</p>}
+        <form onSubmit={handleRegister}>
+          <div className="mb-4">
+            <label htmlFor="email" className="block text-gray-700 font-medium mb-2">
+              Correo Electrónico
+            </label>
             <input
               type="email"
-              placeholder="bulma@capsulecorp.com"
-              className="w-full border-4 border-black  p-3 font-bold outline-none focus:bg-[#FCEE21] shadow-[4px_4px_0px_0px_#000]"
+              id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              required />
-          </div>
-
-          <div>
-            <label className="block font-black text-black uppercase mb-1">Contraseña secreta</label>
-            <input
-              type="password"
-              placeholder="Tu poder secreto para el combate"
-              className="w-full border-4 border-black p-3 font-bold outline-none focus:bg-[#FCEE21] shadow-[4px_4px_0px_0px_#000] text-black"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
           </div>
-
+          <div className="mb-6">
+            <label htmlFor="password" className="block text-gray-700 font-medium mb-2">
+              Contraseña
+            </label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            />
+          </div>
           <button
             type="submit"
-            disabled={loading}
-            className="w-full bg-[#5088C5] border-4 border-black py-4 text-white font-black uppercase text-xl shadow-[6px_6px_0px_0px_#000] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all mt-4">
-            REGISTRARME EN LA CAPSULE CORP.
+            className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            Registrarse
           </button>
         </form>
       </div>
     </div>
-  )
+  );
 }

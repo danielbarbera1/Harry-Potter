@@ -4,7 +4,19 @@ instalar supabase en el proyecto (listo)
 
 subir el proyecto a github (listo)
 
-llamando los personajes en el proyecto
+llamando los personajes en el proyecto (listo)
+
+
+tarea
+
+terminas las paginas de cada una de las areas queridas 
+
+hacer el enrutado de paginas para toda las paginas
+
+acomodar los datos de la base de datos (revisar)
+
+hacer documentacion 
+
 
 
 

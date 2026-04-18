@@ -212,41 +212,6 @@ export default function Card({
                         <span className="text-gryffindor-primary font-bold">{nivel}</span>
                     </div>
                 )}
-                
-                {/* Barra de progreso */}
-                {barraValor !== null && (
-                    <div className="space-y-1">
-                        <div className="flex justify-between text-xs">
-                            <span className="font-bold text-hogwarts-wood">Poder Mágico</span>
-                            <span className="text-gryffindor-primary font-bold">{barraValor}%</span>
-                        </div>
-                        <div className="w-full bg-gray-300 border-2 border-hogwarts-wood h-4 shadow-[3px_3px_0px_0px_rgba(0,0,0,0.2)] overflow-hidden">
-                            <div className={`${barColorClass} h-full transition-all duration-500`} style={{ width: barWidth }}>
-                                <div className="h-full w-full bg-gradient-to-r from-white/30 to-transparent animate-pulse"></div>
-                            </div>
-                        </div>
-                    </div>
-                )}
-                
-                {/* Footer con botones */}
-                {footer ? (
-                    footer
-                ) : (
-                    <div className="space-y-2 mt-2">
-                        {onActionClick && (
-                            <button onClick={onActionClick} className={`
-                                w-full ${config.buttonBg} border-4 border-gryffindor-secondary py-2 font-harry uppercase 
-                                ${config.buttonText} transition-all duration-300
-                                shadow-[4px_4px_0px_0px_rgba(0,0,0,0.3)]
-                                hover:shadow-none hover:translate-x-1 hover:translate-y-1
-                                flex items-center justify-center gap-2
-                            `}>
-                                <span>{actionIcon}</span> {actionText} <span>{actionIcon}</span>
-                            </button>
-                        )}
-                        {secondAction && <div className="text-center">{secondAction}</div>}
-                    </div>
-                )}
             </div>
         </div>
     );
