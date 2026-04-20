@@ -17,6 +17,8 @@ acomodar los datos de la base de datos (revisar)
 
 hacer documentacion 
 
+simplificar el estilo para que se vea mas bonito la pagina 
+
 
 
 

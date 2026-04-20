@@ -1,8 +1,8 @@
 `use client`;
-import Hero from '../../components/ui/Hero';
-import Card from '../../components/ui/Card';
-import Divider from '../../components/ui/Divider';
-import { createClient } from '../../utils/supabase/server';
+import Hero from '@/components/ui/Hero';
+import Card from '@/components/ui/Card';
+import Divider from '@/components/ui/Divider';
+import { createClient } from '@/utils/supabase/server';
 
 export default async function HufflepuffPage() {
   const supabase = await createClient();
