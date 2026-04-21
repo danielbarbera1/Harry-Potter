@@ -1,5 +1,8 @@
-// components/buttons/Button.jsx
+"use client";
+import Link from 'next/link';
+
 export default function Button({ 
+    href,
     children,
     variant = "gryffindor",
     size = "md",
@@ -109,27 +112,35 @@ export default function Button({
     };
 
     const finalIcon = icon !== undefined ? icon : defaultIcons[variant];
+    
+    // Decidimos qué componente usar: Link si hay href, button si no.
+    const isLink = Boolean(href);
+    const Component = isLink ? Link : 'button';
+
+    // Clases base compartidas
+    const baseClasses = `
+        relative ${config.bg} ${sizeClass}
+        border-4 ${config.border} ${config.text}
+        font-harry uppercase tracking-wider
+        ${config.shadow}
+        ${fullWidth ? 'w-full' : ''}
+        ${animated 
+            ? 'hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-300' 
+            : ''
+        }
+        disabled:opacity-50 disabled:cursor-not-allowed
+        disabled:hover:translate-x-0 disabled:hover:translate-y-0
+        group overflow-hidden
+        inline-flex items-center justify-center
+        ${className}
+    `;
 
     return (
-        <button
-            type={type}
-            onClick={onClick}
-            disabled={disabled}
-            className={`
-                relative ${config.bg} ${sizeClass}
-                border-4 ${config.border} ${config.text}
-                font-harry uppercase tracking-wider
-                ${config.shadow}
-                ${fullWidth ? 'w-full' : ''}
-                ${animated 
-                    ? 'hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-300' 
-                    : ''
-                }
-                disabled:opacity-50 disabled:cursor-not-allowed
-                disabled:hover:translate-x-0 disabled:hover:translate-y-0
-                group overflow-hidden
-                ${className}
-            `}
+        <Component
+            href={href}
+            // Solo pasamos estas props si NO es un enlace
+            {...(!isLink ? { type, onClick, disabled } : { onClick })}
+            className={baseClasses}
             {...props}
         >
             {/* Efecto de brillo mágico */}
@@ -166,6 +177,6 @@ export default function Button({
                     </span>
                 )}
             </span>
-        </button>
+        </Component>
     );
-}
+}

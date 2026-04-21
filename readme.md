@@ -11,10 +11,6 @@ tarea
 
 terminas las paginas de cada una de las areas queridas 
 
-hacer el enrutado de paginas para toda las paginas
-
-acomodar los datos de la base de datos (revisar)
-
 hacer documentacion 
 
 simplificar el estilo para que se vea mas bonito la pagina 

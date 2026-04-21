@@ -100,7 +100,7 @@ export default async function HomePage() {
           subtitle="Escuela de Magia y Hechicería"
           description="Descubre la magia que hay dentro de ti. Explora personajes, hechizos y las casas del mundo mágico."
           buttonText="Comenzar aventura"
-          buttonLink="/registro"
+          buttonLink="/register"
           backgroundImage="https://yeyvudsevhdjsdsbfwyd.supabase.co/storage/v1/object/public/casas/Gemini_Generated_Image_5hiis05hiis05hii.png"
           variant="gryffindor"
         />
@@ -138,7 +138,7 @@ export default async function HomePage() {
             {personajesDestacados.length > 0 ? (
               <Carousel items={personajesDestacados} slidesToShow={3} autoPlay={true} variant="gryffindor" />
             ) : (
-              <div className="text-center py-10 text-gray-400 italic">
+              <div className="text-center py-10 text-black italic">
                 <p>No se encontraron magos en el Gran Comedor...</p>
               </div>
             )}

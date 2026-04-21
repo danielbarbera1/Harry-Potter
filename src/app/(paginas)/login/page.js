@@ -1,6 +1,8 @@
+"use client";
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { createClient } from '../../utils/supabase/client';
+import { createClient } from '../../../utils/supabase/client';
+import Button from '../../../components/ui/Button';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -10,6 +12,7 @@ export default function LoginPage() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setError(null);
     const supabase = createClient();
 
     const { error } = await supabase.auth.signInWithPassword({
@@ -20,48 +23,72 @@ export default function LoginPage() {
     if (error) {
       setError('Credenciales inválidas. Por favor, intenta nuevamente.');
     } else {
-      router.push('/'); // Redirige al inicio después del login
+      router.push('/');
     }
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="bg-white p-8 rounded shadow-md w-full max-w-md">
-        <h1 className="text-2xl font-bold mb-6 text-center">Iniciar Sesión</h1>
-        {error && <p className="text-red-500 text-center mb-4">{error}</p>}
-        <form onSubmit={handleLogin}>
-          <div className="mb-4">
-            <label htmlFor="email" className="block text-gray-700 font-medium mb-2">
-              Correo Electrónico
-            </label>
-            <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
-            />
+    <div className="min-h-screen bg-hogwarts-stone flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-md w-full space-y-8 bg-hogwarts-wood/10 p-10 rounded-2xl border-2 border-gryffindor-secondary shadow-2xl backdrop-blur-sm">
+        <div>
+          <h2 className="mt-6 text-center text-4xl font-harry text-gryffindor-secondary">
+            Entrar a Hogwarts
+          </h2>
+          <p className="mt-2 text-center text-sm text-hogwarts-parchment italic">
+            "Palabras mágicas: Alohomora"
+          </p>
+        </div>
+
+        <form className="mt-8 space-y-6" onSubmit={handleLogin}>
+          <div className="rounded-md shadow-sm space-y-4">
+            <div>
+              <label className="text-hogwarts-parchment text-sm font-bold mb-1 block">Correo Electrónico</label>
+              <input
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="appearance-none relative block w-full px-3 py-3 border border-gryffindor-secondary/30 placeholder-gray-500 text-white bg-black/40 rounded-lg focus:outline-none focus:ring-gryffindor-primary focus:border-gryffindor-primary sm:text-sm"
+                placeholder="mago@hogwarts.com"
+              />
+            </div>
+            <div>
+              <label className="text-hogwarts-parchment text-sm font-bold mb-1 block">Contraseña</label>
+              <input
+                type="password"
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="appearance-none relative block w-full px-3 py-3 border border-gryffindor-secondary/30 placeholder-gray-500 text-white bg-black/40 rounded-lg focus:outline-none focus:ring-gryffindor-primary focus:border-gryffindor-primary sm:text-sm"
+                placeholder="••••••••"
+              />
+            </div>
           </div>
-          <div className="mb-6">
-            <label htmlFor="password" className="block text-gray-700 font-medium mb-2">
-              Contraseña
-            </label>
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
-            />
+
+          {error && (
+            <div className="text-red-500 text-sm text-center italic font-bold">
+              🏮 {error}
+            </div>
+          )}
+
+          <div>
+            <Button type="submit" variant="gryffindor" fullWidth>
+              Lanzar hechizo de entrada
+            </Button>
           </div>
-          <button
-            type="submit"
-            className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          >
-            Iniciar Sesión
-          </button>
+          
+          <div className="text-center space-y-2">
+            <p className="text-hogwarts-parchment text-sm">
+              ¿Aún no tienes plaza en Hogwarts?{' '}
+              <button 
+                type="button"
+                onClick={() => router.push('/register')}
+                className="text-gryffindor-secondary font-bold hover:underline"
+              >
+                Regístrate aquí
+              </button>
+            </p>
+          </div>
         </form>
       </div>
     </div>
