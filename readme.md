@@ -9,11 +9,12 @@ llamando los personajes en el proyecto (listo)
 
 tarea
 
-terminas las paginas de cada una de las areas queridas 
+terminas las paginas de cada una de las areas queridas (listo)
 
 hacer documentacion 
 
 simplificar el estilo para que se vea mas bonito la pagina 
+
 
 
 

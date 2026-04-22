@@ -65,7 +65,9 @@ export default function ListaPersonajes({ personajesIniciales }) {
               variant={personaje.casas?.nombre?.toLowerCase() || 'gryffindor'}
               badge={personaje.sangre || 'Mago'}
             >
-              <p className="text-sm italic opacity-90">{personaje.descripcion}</p>
+              <p className="text-sm font-medium text-black italic">
+                {personaje.descripcion}
+              </p>
             </Card>
           ))
         ) : (

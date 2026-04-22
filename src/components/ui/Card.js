@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 // components/cards/Card.jsx
 export default function Card({ 
     // Contenido principal
@@ -28,6 +30,9 @@ export default function Card({
     
     // Footer personalizado (si quieres algo más complejo)
     footer,
+    
+    // Enlace (si quieres que la imagen o tarjeta sea clicable)
+    href,
     
     // Clases para personalización
     className = "",
@@ -154,6 +159,7 @@ export default function Card({
             transition-all 
             ${hoverEffect ? 'hover:-translate-y-2 hover:shadow-[15px_15px_0px_0px_rgba(0,0,0,0.3)]' : ''}
             h-full flex flex-col
+            ${href ? 'cursor-pointer' : ''}
             ${className}
         `} {...props}>
             
@@ -178,7 +184,13 @@ export default function Card({
                 <div className={`bg-hogwarts-parchment p-4 h-64 flex items-center justify-center border-b-4 border-hogwarts-wood relative overflow-hidden ${imageClassName}`}>
                     <div className="absolute inset-0 bg-[url('/img/parchment-texture.png')] opacity-20"></div>
                     <div className="absolute inset-0 bg-[radial-gradient(circle,_#FFD700_1px,_transparent_1px)] [background-size:20px_20px] opacity-10"></div>
-                    <img src={imagen} alt={altImagen || titulo} className="h-full object-contain z-10 drop-shadow-[5px_5px_0px_rgba(0,0,0,0.2)] transition-transform hover:scale-110 duration-300" />
+                    {href ? (
+                        <Link href={href} className="h-full w-full flex items-center justify-center z-10">
+                            <img src={imagen} alt={altImagen || titulo} className="h-full object-contain drop-shadow-[5px_5px_0px_rgba(0,0,0,0.2)] transition-transform hover:scale-110 duration-300" />
+                        </Link>
+                    ) : (
+                        <img src={imagen} alt={altImagen || titulo} className="h-full object-contain z-10 drop-shadow-[5px_5px_0px_rgba(0,0,0,0.2)] transition-transform hover:scale-110 duration-300" />
+                    )}
                 </div>
             )}
 

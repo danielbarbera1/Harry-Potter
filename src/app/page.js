@@ -40,12 +40,12 @@ export default async function HomePage() {
       <Card
         key={p.id}
         titulo={p.nombre}
-        subtitulo={`Casa: ${p.casa}`}
+        subtitulo={`Casa: ${p.casa_nombre || 'Hogwarts'}`}
         imagen={p.imagen_url}
-        variant={p.casa?.toLowerCase() || 'gryffindor'}
+        variant={p.casa_nombre?.toLowerCase() || 'gryffindor'}
         badge={p.etiqueta}
       >
-        <p>{p.descripcion}</p>
+        <p className="text-black font-medium italic">{p.descripcion}</p>
       </Card>
     ));
 
@@ -58,7 +58,7 @@ export default async function HomePage() {
         variant="magic"
         badge={h.nivel}
       >
-        <p>{h.descripcion}</p>
+        <p className="text-black font-medium">{h.descripcion}</p>
       </Card>
     ));
 
@@ -69,14 +69,17 @@ export default async function HomePage() {
         subtitulo={casa.colores}
         imagen={casa.imagen_url}
         variant={casa.nombre.toLowerCase()}
+        href={`/casas/${casa.nombre}`}
       >
-        <p><strong>Fundador:</strong> {casa.fundador}</p>
-        <p><strong>Animal:</strong> {casa.animal}</p>
-        <p><strong>Cualidades:</strong> {casa.cualidades}</p>
-        <p><strong>Fantasma:</strong> {casa.fantasma}</p>
-        <p><strong>Jefe de Casa:</strong> {casa.jefe_de_casa}</p>
-        <p><strong>Elemento:</strong> {casa.elemento}</p>
-        <p><strong>Características:</strong> {casa.caracteristicas}</p>
+        <div className="text-black font-medium space-y-1">
+          <p><strong>Fundador:</strong> {casa.fundador}</p>
+          <p><strong>Animal:</strong> {casa.animal}</p>
+          <p><strong>Cualidades:</strong> {casa.cualidades}</p>
+          <p><strong>Fantasma:</strong> {casa.fantasma}</p>
+          <p><strong>Jefe de Casa:</strong> {casa.jefe_de_casa}</p>
+          <p><strong>Elemento:</strong> {casa.elemento}</p>
+          <p><strong>Características:</strong> {casa.caracteristicas}</p>
+        </div>
       </Card>
     ));
 
@@ -89,7 +92,7 @@ export default async function HomePage() {
         variant="book"
         badge={l.nivel}
       >
-        <p>{l.descripcion}</p>
+        <p className="text-black font-medium italic">{l.descripcion}</p>
       </Card>
     ));
 
@@ -157,13 +160,15 @@ export default async function HomePage() {
               <Divider text="Domina la magia" variant="magic" />
             </div>
 
-            {hechizosDestacados.length > 0 ? (
-              <Carousel items={hechizosDestacados} slidesToShow={2} autoPlay={true} variant="magic" />
-            ) : (
-              <div className="text-center py-10 text-gray-400 italic">
-                <p>La sección prohibida está vacía por ahora...</p>
-              </div>
-            )}
+            <div className="w-full">
+              {hechizosDestacados.length > 0 ? (
+                <Carousel items={hechizosDestacados} slidesToShow={4} autoPlay={true} variant="magic" />
+              ) : (
+                <div className="text-center py-10 text-gray-400 italic">
+                  <p>La sección prohibida está vacía por ahora...</p>
+                </div>
+              )}
+            </div>
 
             <div className="text-center mt-8">
               <Button variant="magic" href="/hechizos">Ver todos los hechizos</Button>
