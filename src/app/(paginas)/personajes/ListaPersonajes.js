@@ -2,9 +2,11 @@
 import { useState } from 'react';
 import Card from '../../../components/ui/Card';
 import Divider from '../../../components/ui/Divider';
+import PersonajesGrid from '../../../components/PersonajesGrid';
 
 export default function ListaPersonajes({ personajesIniciales }) {
   const [selectedCasa, setSelectedCasa] = useState('');
+  
   const casas = ['Gryffindor', 'Slytherin', 'Ravenclaw', 'Hufflepuff'];
 
   const personajesFiltrados = personajesIniciales.filter((personaje) => {
@@ -54,30 +56,7 @@ export default function ListaPersonajes({ personajesIniciales }) {
       </div>
 
       {/* Grid de Personajes */}
-      <div className=" text-black grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {personajesFiltrados.length > 0 ? (
-          personajesFiltrados.map((personaje) => (
-            <Card
-              key={personaje.id}
-              titulo={personaje.nombre}
-              subtitulo={`Casa: ${personaje.casas?.nombre || 'Sin casa'}`}
-              imagen={personaje.imagen_url}
-              variant={personaje.casas?.nombre?.toLowerCase() || 'gryffindor'}
-              badge={personaje.sangre || 'Mago'}
-            >
-              <p className="text-sm font-medium text-black italic">
-                {personaje.descripcion}
-              </p>
-            </Card>
-          ))
-        ) : (
-          <div className="col-span-full text-center py-20 bg-hogwarts-parchment/5 rounded-2xl border-2 border-dashed border-hogwarts-parchment/20">
-            <p className="text-2xl text-hogwarts-parchment/50 italic">
-              No hay magos de esta casa en el Gran Comedor...
-            </p>
-          </div>
-        )}
-      </div>
+      <PersonajesGrid personajes={personajesFiltrados} />
     </div>
   );
 }

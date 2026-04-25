@@ -1,18 +1,25 @@
 import { createClient } from '../../../utils/supabase/server';
-import Card from '../../../components/ui/Card';
 import Divider from '../../../components/ui/Divider';
+import LibrosGrid from './LibrosGrid';
 
 export default async function LibrosPage() {
   const supabase = await createClient();
 
-  // Obtenemos todos los libros de la base de datos
-  const { data: libros, error } = await supabase
-    .from('libros')
-    .select('*')
-    .order('libro', { ascending: true }); // Los ordenamos por nombre
+  // Obtenemos todos los datos necesarios en paralelo para las relaciones
+  const [librosRes, peliculasRes, hechizosRes, personajesRes] = await Promise.all([
+    supabase.from('libros').select('*').order('libro', { ascending: true }),
+    supabase.from('peliculas').select('*'),
+    supabase.from('hechizos').select('*'),
+    supabase.from('personajes').select('*, casas(nombre), rol(rol)')
+  ]);
 
-  if (error) {
-    console.error('Error al cargar libros:', error);
+  const libros = librosRes.data || [];
+  const peliculas = peliculasRes.data || [];
+  const hechizos = hechizosRes.data || [];
+  const personajes = personajesRes.data || [];
+
+  if (librosRes.error) {
+    console.error('Error al cargar libros:', librosRes.error);
     return (
       <div className="min-h-screen bg-hogwarts-stone flex items-center justify-center">
         <div className="text-center">
@@ -38,26 +45,13 @@ export default async function LibrosPage() {
 
         <Divider text="Los Siete Libros" variant="gryffindor" />
 
-        {/* Grid de Libros */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mt-12">
-          {libros?.map((libro) => (
-            <div key={libro.id} className="flex justify-center">
-              <Card
-                titulo={libro.libro}
-                subtitulo="Escrito por J.K. Rowling"
-                imagen={libro.imagen_url}
-                variant="gryffindor" // Usamos el tema de Gryffindor para los libros
-              >
-                <div className="mt-4">
-                  <p className="text-sm text-hogwarts-parchment opacity-80 line-clamp-3">
-                    Sumérgete en la historia que cambió el mundo mágico para siempre. 
-                    Un ejemplar imprescindible en cualquier estantería de mago.
-                  </p>
-                </div>
-              </Card>
-            </div>
-          ))}
-        </div>
+        {/* Grid de Libros (Componente de Cliente para manejar el Modal) */}
+        <LibrosGrid 
+          libros={libros} 
+          peliculas={peliculas} 
+          hechizos={hechizos} 
+          personajes={personajes} 
+        />
 
         {/* Mensaje si no hay libros */}
         {libros?.length === 0 && (

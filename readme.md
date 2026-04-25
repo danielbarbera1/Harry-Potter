@@ -15,6 +15,9 @@ hacer documentacion
 
 simplificar el estilo para que se vea mas bonito la pagina 
 
+hacer que se pueda registrar usuarios y ingresar usuarios
+
+
 
 
 

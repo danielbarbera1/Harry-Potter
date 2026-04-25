@@ -40,6 +40,7 @@ export default function Card({
     contentClassName = "",
     hoverEffect = true,
     
+    onClick,
     ...props
 }) {
     
@@ -150,24 +151,26 @@ export default function Card({
     const barWidth = barraValor ? `${Math.min(100, Math.max(0, barraValor))}%` : "0%";
 
     return (
-        <div className={`
-            max-w-sm 
-            bg-hogwarts-parchment 
-            border-4 border-hogwarts-wood 
-            shadow-[10px_10px_0px_0px_rgba(0,0,0,0.3)]
-            overflow-hidden 
-            transition-all 
-            ${hoverEffect ? 'hover:-translate-y-2 hover:shadow-[15px_15px_0px_0px_rgba(0,0,0,0.3)]' : ''}
-            h-full flex flex-col
-            ${href ? 'cursor-pointer' : ''}
-            ${className}
-        `} {...props}>
+        <div 
+            onClick={onClick}
+            className={`
+                max-w-sm 
+                bg-hogwarts-parchment 
+                border-4 border-hogwarts-wood 
+                shadow-[10px_10px_0px_0px_rgba(0,0,0,0.3)]
+                overflow-hidden 
+                transition-all 
+                ${hoverEffect ? 'hover:-translate-y-2 hover:shadow-[15px_15px_0px_0px_rgba(0,0,0,0.3)]' : ''}
+                h-full flex flex-col
+                ${(href || onClick) ? 'cursor-pointer' : ''}
+                ${className}
+            `} {...props}>
             
             {/* Cabecera */}
             <div className={`${config.headerBg} border-b-4 ${config.headerBorder} p-4 flex justify-between items-center`}>
                 <div className="flex items-center gap-2 overflow-hidden">
                     <span className="text-2xl">{config.icon}</span>
-                    <h3 className={`${config.headerText} font-harry text-xl uppercase tracking-wider truncate`}>
+                    <h3 className={`${config.headerText} font-harry text-lg md:text-xl uppercase tracking-wider leading-tight`}>
                         {titulo}
                     </h3>
                 </div>
@@ -222,6 +225,33 @@ export default function Card({
                     <div className="flex justify-between items-center">
                         <span className="text-xs text-hogwarts-wood font-bold">📜 Nivel:</span>
                         <span className="text-gryffindor-primary font-bold">{nivel}</span>
+                    </div>
+                )}
+
+                {/* Botón de acción */}
+                {onActionClick && (
+                    <div className="pt-4 mt-auto">
+                        <button
+                            onClick={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                onActionClick();
+                            }}
+                            className={`
+                                w-full py-2 px-4 
+                                ${config.buttonBg} ${config.buttonHover} 
+                                ${config.buttonText}
+                                border-2 ${config.headerBorder}
+                                font-harry text-sm uppercase tracking-wider
+                                rounded-lg transition-all duration-300
+                                flex items-center justify-center gap-2
+                                shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)]
+                                hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px]
+                            `}
+                        >
+                            <span>{actionIcon}</span>
+                            {actionText}
+                        </button>
                     </div>
                 )}
             </div>

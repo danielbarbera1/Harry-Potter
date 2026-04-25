@@ -1,7 +1,7 @@
 import { createClient } from '../../../../utils/supabase/server';
 import Card from '../../../../components/ui/Card';
 import Divider from '../../../../components/ui/Divider';
-import ListaPersonajes from '../../personajes/ListaPersonajes';
+import PersonajesGrid from '../../../../components/PersonajesGrid';
 
 export default async function CasaPage({ params }) {
   const { id } = await params;
@@ -81,21 +81,10 @@ export default async function CasaPage({ params }) {
           {personajesError ? (
             <p className="text-center text-hogwarts-parchment">Error al cargar los alumnos.</p>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {personajes?.map((p) => (
-                <Card
-                  key={p.id}
-                  titulo={p.nombre}
-                  subtitulo={`Miembro de ${casa.nombre}`}
-                  imagen={p.imagen_url}
-                  variant={casa.nombre.toLowerCase()}
-                >
-                  <p className="text-sm font-medium text-black italic">
-                    {p.descripcion}
-                  </p>
-                </Card>
-              ))}
-            </div>
+            <PersonajesGrid 
+              personajes={personajes} 
+              variant={casa.nombre.toLowerCase()} 
+            />
           )}
         </div>
       </div>
