@@ -153,18 +153,8 @@ export default function Card({
     return (
         <div 
             onClick={onClick}
-            className={`
-                max-w-sm 
-                bg-hogwarts-parchment 
-                border-4 border-hogwarts-wood 
-                shadow-[10px_10px_0px_0px_rgba(0,0,0,0.3)]
-                overflow-hidden 
-                transition-all 
-                ${hoverEffect ? 'hover:-translate-y-2 hover:shadow-[15px_15px_0px_0px_rgba(0,0,0,0.3)]' : ''}
-                h-full flex flex-col
-                ${(href || onClick) ? 'cursor-pointer' : ''}
-                ${className}
-            `} {...props}>
+            className={`max-w-sm bg-hogwarts-parchment border-4 border-hogwarts-wood shadow-[10px_10px_0px_0px_rgba(0,0,0,0.3)] overflow-hidden transition-all ${hoverEffect ? 'hover:-translate-y-2 hover:shadow-[15px_15px_0px_0px_rgba(0,0,0,0.3)]' : ''} h-full flex flex-col ${(href || onClick) ? 'cursor-pointer' : ''} ${className}`}
+            {...props}>
             
             {/* Cabecera */}
             <div className={`${config.headerBg} border-b-4 ${config.headerBorder} p-4 flex justify-between items-center`}>

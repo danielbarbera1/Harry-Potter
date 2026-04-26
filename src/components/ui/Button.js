@@ -117,23 +117,24 @@ export default function Button({
     const isLink = Boolean(href);
     const Component = isLink ? Link : 'button';
 
-    // Clases base compartidas
-    const baseClasses = `
-        relative ${config.bg} ${sizeClass}
-        border-4 ${config.border} ${config.text}
-        font-harry uppercase tracking-wider
-        ${config.shadow}
-        ${fullWidth ? 'w-full' : ''}
-        ${animated 
-            ? 'hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-300' 
-            : ''
-        }
-        disabled:opacity-50 disabled:cursor-not-allowed
-        disabled:hover:translate-x-0 disabled:hover:translate-y-0
-        group overflow-hidden
-        inline-flex items-center justify-center
-        ${className}
-    `;
+    // Clases base compartidas - Normalizadas para evitar errores de hidratación
+    const baseClasses = [
+        "relative",
+        config.bg,
+        sizeClass,
+        "border-4",
+        config.border,
+        config.text,
+        "font-harry uppercase tracking-wider",
+        config.shadow,
+        fullWidth ? "w-full" : "",
+        animated ? "hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-300" : "",
+        "disabled:opacity-50 disabled:cursor-not-allowed",
+        "disabled:hover:translate-x-0 disabled:hover:translate-y-0",
+        "group overflow-hidden",
+        "inline-flex items-center justify-center",
+        className
+    ].filter(Boolean).join(" ");
 
     return (
         <Component
@@ -144,20 +145,16 @@ export default function Button({
             {...props}
         >
             {/* Efecto de brillo mágico */}
-            <span className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent 
-                opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <span className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             </span>
             
             {/* Efecto de polvo de hadas */}
             {animated && (
                 <span className="absolute inset-0 pointer-events-none">
-                    <span className="absolute -top-2 -left-2 text-yellow-300 text-xs 
-                        animate-ping opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span className="absolute -top-2 -left-2 text-yellow-300 text-xs animate-ping opacity-0 group-hover:opacity-100 transition-opacity">
                         ✨
                     </span>
-                    <span className="absolute -bottom-2 -right-2 text-yellow-300 text-xs 
-                        animate-ping opacity-0 group-hover:opacity-100 transition-opacity 
-                        delay-150">
+                    <span className="absolute -bottom-2 -right-2 text-yellow-300 text-xs animate-ping opacity-0 group-hover:opacity-100 transition-opacity delay-150">
                         ✨
                     </span>
                 </span>

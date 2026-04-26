@@ -117,38 +117,21 @@ export default function Hero({
 
         {/* Título */}
         {title && (
-          <h1 className={`
-                        font-harry text-5xl md:text-6xl lg:text-7xl 
-                        ${config.title}
-                        mb-4 tracking-wider
-                        [text-shadow:4px_4px_0px_rgba(0,0,0,0.5)]
-                        animate-flicker
-                        ${align === 'center' ? 'mx-auto' : ''}
-                    `}>
+          <h1 className={`font-harry text-5xl md:text-6xl lg:text-7xl ${config.title} mb-4 tracking-wider [text-shadow:4px_4px_0px_rgba(0,0,0,0.5)] animate-flicker ${align === 'center' ? 'mx-auto' : ''}`}>
             {title}
           </h1>
         )}
 
         {/* Subtítulo */}
         {subtitle && (
-          <p className={`
-                        text-lg md:text-xl
-                        ${config.subtitle}
-                        mb-4
-                        ${align === 'center' ? 'mx-auto' : ''}
-                    `}>
+          <p className={`text-lg md:text-xl ${config.subtitle} mb-4 ${align === 'center' ? 'mx-auto' : ''}`}>
             {subtitle}
           </p>
         )}
 
         {/* Descripción */}
         {description && (
-          <p className={`
-                        text-sm md:text-base max-w-2xl
-                        ${config.description}
-                        mb-8
-                        ${align === 'center' ? 'mx-auto' : ''}
-                    `}>
+          <p className={`text-sm md:text-base max-w-2xl ${config.description} mb-8 ${align === 'center' ? 'mx-auto' : ''}`}>
             {description}
           </p>
         )}
@@ -165,32 +148,14 @@ export default function Hero({
           buttonLink ? (
             <a
               href={buttonLink}
-              className={`
-                                inline-block px-8 py-3
-                                border-4 rounded-lg
-                                font-harry text-lg uppercase tracking-wider
-                                transition-all duration-300
-                                hover:scale-105 hover:shadow-xl
-                                active:scale-95
-                                ${config.button}
-                                ${align === 'center' ? 'mx-auto' : ''}
-                            `}
+              className={`inline-block px-8 py-3 border-4 rounded-lg font-harry text-lg uppercase tracking-wider transition-all duration-300 hover:scale-105 hover:shadow-xl active:scale-95 ${config.button} ${align === 'center' ? 'mx-auto' : ''}`}
             >
               {buttonText}
             </a>
           ) : (
             <button
               onClick={onButtonClick}
-              className={`
-                                inline-block px-8 py-3
-                                border-4 rounded-lg
-                                font-harry text-lg uppercase tracking-wider
-                                transition-all duration-300
-                                hover:scale-105 hover:shadow-xl
-                                active:scale-95
-                                ${config.button}
-                                ${align === 'center' ? 'mx-auto' : ''}
-                            `}
+              className={`inline-block px-8 py-3 border-4 rounded-lg font-harry text-lg uppercase tracking-wider transition-all duration-300 hover:scale-105 hover:shadow-xl active:scale-95 ${config.button} ${align === 'center' ? 'mx-auto' : ''}`}
             >
               {buttonText}
             </button>

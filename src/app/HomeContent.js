@@ -257,16 +257,13 @@ export default function HomeContent({
         )}
 
         {modalType === 'hechizo' && (
-          <div className="flex flex-col md:flex-row gap-6 text-black">
-            <div className="md:w-1/3">
-              <img src={selectedItem.imagen_url} alt={selectedItem.nombre} className="w-full rounded-lg border-4 border-purple-400 shadow-xl object-cover aspect-square" />
-            </div>
-            <div className="md:w-2/3 space-y-4">
+          <div className="text-black space-y-6">
+            <div className="space-y-4">
               <div>
                 <h3 className="text-2xl font-harry text-purple-800">Detalles del Encantamiento</h3>
                 <Divider variant="magic" />
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
                 <p><strong>Tipo:</strong> {selectedItem.tipo || 'Hechizo'}</p>
                 <p><strong>Nivel:</strong> {selectedItem.nivel || 'Desconocido'}</p>
                 <p><strong>Visto por primera vez:</strong> {selectedItem.libro || 'Sección Prohibida'}</p>
