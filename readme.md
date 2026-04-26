@@ -8,25 +8,94 @@ Este proyecto fue desarrollado como una **práctica avanzada de integración con
 
 ## 📸 Galería de la Academia
 
-A continuación, se presentan algunas capturas de pantalla que muestran la interfaz y funcionalidades del proyecto:
+A continuación, se presentan todas las capturas de pantalla que muestran la interfaz y funcionalidades del proyecto:
+
+---
 
 ### 🏰 Inicio y Navegación
 ![Página de Inicio](./assets/inicio.png)
 *Explora el Gran Comedor y comienza tu aventura mágica.*
 
-### 🧙‍♂️ Personajes y Hechizos
+---
+
+### 🧙‍♂️ Personajes
 <p align="center">
   <img src="./assets/PersonajesMágicos.png" width="45%" />
-  <img src="./assets/paginadehechizos.png" width="45%" />
+  <img src="./assets/PersonajesMágicosfiltro.png" width="45%" />
 </p>
-*Listado completo de magos y catálogo de encantamientos.*
+*Listado completo de magos y filtrado por casa.*
 
-### 📚 Biblioteca y Detalles
+<p align="center">
+  <img src="./assets/personajescarrusel.png" width="70%" />
+</p>
+*Carrusel de personajes destacados.*
+
+---
+
+### ✨ Hechizos
+<p align="center">
+  <img src="./assets/paginadehechizos.png" width="45%" />
+  <img src="./assets/filtrodehechizos.png" width="45%" />
+</p>
+*Catálogo de encantamientos y filtrado por nivel.*
+
+<p align="center">
+  <img src="./assets/hechizospodedorsos.png" width="45%" />
+  <img src="./assets/modaldehechizos.png" width="45%" />
+</p>
+*Vista de reverso de hechizos y modal de detalles.*
+
+<p align="center">
+  <img src="./assets/paginadehechizospartreenpaginado.png" width="70%" />
+</p>
+*Sistema de paginación del catálogo.*
+
+---
+
+### 📚 Biblioteca Mágica
 <p align="center">
   <img src="./assets/paginalibros.png" width="45%" />
   <img src="./assets/modaldelibros.png" width="45%" />
 </p>
-*Consulta la colección de libros y sus detalles mágicos.*
+*Colección de libros y sus detalles mágicos.*
+
+<p align="center">
+  <img src="./assets/librosmagicoscarrusel.png" width="70%" />
+</p>
+*Carrusel de libros mágicos.*
+
+---
+
+### 🏠 Las Cuatro Casas de Hogwarts
+<p align="center">
+  <img src="./assets/las cuatro casas.png" width="70%" />
+</p>
+*Vista general de las cuatro casas.*
+
+<p align="center">
+  <img src="./assets/casasGryffindorparte1.png" width="45%" />
+  <img src="./assets/casasGryffindorparte2.png" width="45%" />
+</p>
+*Sección de Gryffindor — la casa del coraje.*
+
+<p align="center">
+  <img src="./assets/casasSlytherinparte1.png" width="45%" />
+  <img src="./assets/casasSlytherinparte2.png" width="45%" />
+</p>
+*Sección de Slytherin — la casa de la astucia.*
+
+---
+
+### 🪄 Modales de Casas
+<p align="center">
+  <img src="./assets/modalGryffindor.png" width="45%" />
+  <img src="./assets/modalSlytherin.png" width="45%" />
+</p>
+<p align="center">
+  <img src="./assets/modalHufflepuff.png" width="45%" />
+  <img src="./assets/modalRavenclaw.png" width="45%" />
+</p>
+*Modales detallados de cada una de las cuatro casas: Gryffindor, Slytherin, Hufflepuff y Ravenclaw.*
 
 ---
 
