@@ -14,7 +14,9 @@ A continuación, se presentan todas las capturas de pantalla que muestran la int
 
 ### 🏰 Inicio y Navegación
 ![Página de Inicio](./assets/inicio.png)
-*Explora el Gran Comedor y comienza tu aventura mágica.*
+<p align="center">
+Explora el Gran Comedor y comienza tu aventura mágica.
+</p>
 
 ---
 
@@ -23,12 +25,14 @@ A continuación, se presentan todas las capturas de pantalla que muestran la int
   <img src="./assets/PersonajesMágicos.png" width="45%" />
   <img src="./assets/PersonajesMágicosfiltro.png" width="45%" />
 </p>
-*Listado completo de magos y filtrado por casa.*
+<p align="center">Listado completo de magos y filtrado por casa.</p>
 
 <p align="center">
   <img src="./assets/personajescarrusel.png" width="70%" />
 </p>
-*Carrusel de personajes destacados.*
+<p align="center">
+Carrusel de personajes destacados.
+</p>
 
 ---
 
@@ -37,18 +41,23 @@ A continuación, se presentan todas las capturas de pantalla que muestran la int
   <img src="./assets/paginadehechizos.png" width="45%" />
   <img src="./assets/filtrodehechizos.png" width="45%" />
 </p>
-*Catálogo de encantamientos y filtrado por nivel.*
-
+<p align="center">
+Catálog  o de encantamientos y filtrado por nivel.
+</p>
 <p align="center">
   <img src="./assets/hechizospodedorsos.png" width="45%" />
   <img src="./assets/modaldehechizos.png" width="45%" />
 </p>
-*Vista de reverso de hechizos y modal de detalles.*
+<p align="center">
+Vista de reverso de hechizos y modal de detalles.
+</p>
 
 <p align="center">
   <img src="./assets/paginadehechizospartreenpaginado.png" width="70%" />
 </p>
-*Sistema de paginación del catálogo.*
+<p align="center">
+Sistema de paginación del catálogo.
+</p>
 
 ---
 
@@ -57,12 +66,16 @@ A continuación, se presentan todas las capturas de pantalla que muestran la int
   <img src="./assets/paginalibros.png" width="45%" />
   <img src="./assets/modaldelibros.png" width="45%" />
 </p>
-*Colección de libros y sus detalles mágicos.*
+<p align="center">
+Colección de libros y sus detalles mágicos.
+</p>
 
 <p align="center">
   <img src="./assets/librosmagicoscarrusel.png" width="70%" />
 </p>
-*Carrusel de libros mágicos.*
+<p align="center">
+Carrusel de libros mágicos.
+</p>
 
 ---
 
@@ -70,19 +83,25 @@ A continuación, se presentan todas las capturas de pantalla que muestran la int
 <p align="center">
   <img src="./assets/las cuatro casas.png" width="70%" />
 </p>
-*Vista general de las cuatro casas.*
+<p align="center">
+Vista general de las cuatro casas.
+</p>
 
 <p align="center">
   <img src="./assets/casasGryffindorparte1.png" width="45%" />
   <img src="./assets/casasGryffindorparte2.png" width="45%" />
 </p>
-*Sección de Gryffindor — la casa del coraje.*
+<p align="center">
+Sección de Gryffindor — la casa del coraje.
+</p>
 
 <p align="center">
   <img src="./assets/casasSlytherinparte1.png" width="45%" />
   <img src="./assets/casasSlytherinparte2.png" width="45%" />
 </p>
-*Sección de Slytherin — la casa de la astucia.*
+<p align="center">
+Sección de Slytherin — la casa de la astucia.
+</p>
 
 ---
 
@@ -95,7 +114,9 @@ A continuación, se presentan todas las capturas de pantalla que muestran la int
   <img src="./assets/modalHufflepuff.png" width="45%" />
   <img src="./assets/modalRavenclaw.png" width="45%" />
 </p>
-*Modales detallados de cada una de las cuatro casas: Gryffindor, Slytherin, Hufflepuff y Ravenclaw.*
+<p align="center">
+Modales detallados de cada una de las cuatro casas: Gryffindor, Slytherin, Hufflepuff y Ravenclaw.
+</p>
 
 ---
 
